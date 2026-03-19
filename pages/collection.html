@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Toute la collection Lumès — masques, oreillers, accessoires sommeil premium.">
+<title>Collection — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+.collection-hero{padding:calc(var(--nav-h) + 3rem) 1.5rem 3rem;text-align:center;background:var(--deep);border-bottom:1px solid rgba(200,212,232,.08)}
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;padding:1.5rem 1.5rem;background:var(--deep);border-bottom:1px solid rgba(200,212,232,.06);position:sticky;top:var(--nav-h);z-index:10}
+.filter-btn{background:transparent;border:1px solid rgba(200,212,232,.15);color:var(--mist);padding:.35rem .9rem;border-radius:20px;font-family:var(--fb);font-size:.72rem;letter-spacing:.08em;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.sort-select{background:var(--ink);border:1px solid rgba(200,212,232,.12);color:var(--mist);padding:.35rem .8rem;border-radius:20px;font-family:var(--fb);font-size:.72rem;cursor:pointer;margin-left:auto}
+.collection-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:1000px;margin:0 auto;padding:2px}
+@media(min-width:600px){.collection-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.collection-grid{grid-template-columns:repeat(4,1fr)}}
+.product-count{text-align:center;font-size:.72rem;color:var(--mist);padding:.8rem;letter-spacing:.1em}
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<div class="collection-hero">
+  <div class="ey ey-c" style="justify-content:center;animation:fu .8s ease both">Notre collection</div>
+  <h1 class="sec-title" style="animation:fu .8s ease both .15s">Tous nos produits<br><em>de sommeil</em></h1>
+  <p style="font-size:.85rem;color:var(--mist);animation:fu .8s ease both .3s">6 produits conçus avec des spécialistes pour transformer vos nuits.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-cat="all">Tous</button>
+  <button class="filter-btn" data-cat="masque">Masques</button>
+  <button class="filter-btn" data-cat="oreiller">Oreillers</button>
+  <button class="filter-btn" data-cat="massage">Massage</button>
+  <button class="filter-btn" data-cat="temperature">Température</button>
+  <button class="filter-btn" data-cat="coffret">Coffrets</button>
+  <select class="sort-select" id="sortSelect">
+    <option value="default">Trier par</option>
+    <option value="price-asc">Prix croissant</option>
+    <option value="price-desc">Prix décroissant</option>
+    <option value="rating">Meilleures notes</option>
+    <option value="discount">Meilleures promos</option>
+  </select>
+</div>
+
+<section class="sec sec-dark" style="padding:1.5rem">
+  <div class="product-count" id="prodCount">6 produits</div>
+  <div class="collection-grid" id="collectionGrid"></div>
+</section>
+
+<div id="site-footer"></div>
+
+<div class="sticky">
+  <div>
+    <div class="sticky-price">Livraison offerte</div>
+    <div class="sticky-sub">Dès 40€ d'achat</div>
+  </div>
+  <button class="sticky-btn" onclick="document.getElementById('collectionGrid').scrollIntoView({behavior:'smooth'})">Voir la collection ↑</button>
+</div>
+
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>
+initPage();
+let currentCat = 'all';
+let currentSort = 'default';
+
+
+
+
+function renderGrid() {
+  const grid = document.getElementById('collectionGrid');
+  let products = Object.values(PRODS);
+
+  if (currentCat !== 'all') products = products.filter(p => p.category === currentCat);
+
+  switch(currentSort) {
+    case 'price-asc':  products.sort((a,b) => a.price - b.price); break;
+    case 'price-desc': products.sort((a,b) => b.price - a.price); break;
+    case 'rating':     products.sort((a,b) => b.rating - a.rating); break;
+    case 'discount':   products.sort((a,b) => b.discount - a.discount); break;
+  }
+
+  document.getElementById('prodCount').textContent = `${products.length} produit${products.length > 1 ? 's' : ''}`;
+
+  grid.innerHTML = products.map((p, i) => `
+    <div class="pcard rv" style="--i:${i}">
+      <div class="pcard-img">
+        ${p.badge ? `<div class="pbadge">${p.badge}</div>` : ''}
+        <a href="product.html?id=${p.id}">
+          <img src="${p.img}&w=600&h=450&fit=crop" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="product.html?id=${p.id}" style="color:inherit">${p.name}</a></div>
+        <div class="pdesc">${p.tagline}</div>
+        <div style="font-size:.7rem;color:var(--gold);margin-bottom:.5rem">★ ${p.rating} <span style="color:var(--mist)">(${p.reviews})</span></div>
+        <div class="pfoot">
+          <div class="pprice">${fmtPrice(p.price)} <s>${fmtPrice(p.original)}</s></div>
+          <button class="badd" data-id="${p.id}"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.rv').forEach(el => setTimeout(() => el.classList.add('on'), 50));
+  grid.querySelectorAll('.badd').forEach(b => {
+    b.addEventListener('click', () => {
+      Cart.add(b.dataset.id);
+      b.querySelector('span').textContent = '✓';
+      b.style.background = 'var(--gold)'; b.style.color = 'var(--night)';
+      setTimeout(() => { b.querySelector('span').textContent = 'Ajouter'; b.style.background = ''; b.style.color = ''; }, 1600);
+    });
+  });
+}
+
+renderGrid();
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    renderGrid();
+  });
+});
+
+document.getElementById('sortSelect').addEventListener('change', e => {
+  currentSort = e.target.value;
+  renderGrid();
+});
+</script>
+</body>
+</html>

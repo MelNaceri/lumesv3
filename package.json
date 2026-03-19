@@ -1,0 +1,10 @@
+{
+  "name": "lumes-site",
+  "version": "3.0.0",
+  "description": "Lumès — Site e-commerce sommeil premium",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node --watch server.cjs"
+  },
+  "engines": { "node": ">=18.0.0" }
+}
