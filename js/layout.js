@@ -15,8 +15,8 @@ function injectLayout(opts) {
       '<nav id="mainnav">' +
         '<a href="' + base + 'index.html" class="logo">Lum\xe8s</a>' +
         '<div class="nav-links">' +
-          '<a href="' + base + 'index.html#produits">Collection</a>' +
-          '<a href="' + base + 'pages/collection.html">Tous les produits</a>' +
+          '<a href="' + base + 'pages/collection.html">Collection</a>' +
+          '<a href="' + base + 'index.html#produits">Nos produits</a>' +
           '<a href="' + base + 'index.html#bienfaits">Bienfaits</a>' +
           '<a href="' + base + 'index.html#avis">Avis</a>' +
           '<a href="' + base + 'index.html#faq">FAQ</a>' +
