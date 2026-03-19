@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<title>Politique de confidentialité — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+.legal-wrap{max-width:720px;margin:0 auto;padding:calc(var(--nav-h) + 3rem) 1.5rem 4rem}
+.legal-wrap h1{font-family:var(--fd);font-size:clamp(2rem,6vw,3rem);font-weight:300;color:var(--star);margin-bottom:.5rem}
+.legal-wrap h2{font-family:var(--fd);font-size:1.3rem;color:var(--gold);margin:2rem 0 .8rem;padding-top:1rem;border-top:1px solid rgba(200,212,232,.08)}
+.legal-wrap p,.legal-wrap li{font-size:.88rem;color:var(--moon);line-height:1.9;margin-bottom:.6rem}
+.legal-wrap ul{padding-left:1.2rem;margin-bottom:.8rem}
+.legal-wrap ul li{list-style:disc}
+.legal-wrap a{color:var(--gold)}
+.legal-wrap strong{color:var(--star)}
+.legal-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.legal-nav a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);border:1px solid rgba(200,212,232,.12);padding:.3rem .7rem;border-radius:2px;transition:color .2s,border-color .2s}
+.legal-nav a:hover,.legal-nav a.active{color:var(--gold);border-color:var(--gold)}
+.update-date{font-size:.72rem;color:var(--mist);margin-bottom:2rem}
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0}
+@media(max-width:480px){.rights-grid{grid-template-columns:1fr}}
+.right-card{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:var(--r);padding:.8rem 1rem}
+.right-card strong{color:var(--gold);font-size:.82rem;display:block;margin-bottom:.3rem}
+.right-card p{font-size:.78rem;color:var(--mist);margin:0}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<div class="legal-wrap">
+  <div class="ey" style="margin-bottom:.5rem">Informations légales</div>
+  <h1>Politique de confidentialité</h1>
+  <p class="update-date">Dernière mise à jour : mars 2026 — Conforme au RGPD (Règlement UE 2016/679)</p>
+
+  <div class="legal-nav">
+    <a href="legal.html">Mentions légales</a>
+    <a href="cgv.html">CGV</a>
+    <a href="privacy.html" class="active">Confidentialité</a>
+    <a href="cookies.html">Cookies</a>
+  </div>
+
+  <h2>1. Responsable du traitement</h2>
+  <p><strong>Jean Dupont</strong> — Lumès<br>
+  12 rue de la Paix, 75001 Paris, France<br>
+  Email : <a href="mailto:contact@lumes.fr">contact@lumes.fr</a><br>
+  Téléphone : +33 6 00 00 00 00</p>
+
+  <h2>2. Données collectées</h2>
+  <p>Nous collectons uniquement les données nécessaires à nos services :</p>
+  <ul>
+    <li><strong>Données de compte :</strong> nom, email, mot de passe (hashé — jamais en clair)</li>
+    <li><strong>Données de commande :</strong> adresse de livraison, téléphone, contenu du panier</li>
+    <li><strong>Données de paiement :</strong> traitées directement par Stripe — nous ne stockons aucune donnée bancaire</li>
+    <li><strong>Données de navigation :</strong> pages visitées, durée de session (via Google Analytics — anonymisé)</li>
+  </ul>
+
+  <h2>3. Finalités et bases légales</h2>
+  <ul>
+    <li><strong>Traitement des commandes</strong> — base légale : exécution du contrat</li>
+    <li><strong>Gestion du compte client</strong> — base légale : exécution du contrat</li>
+    <li><strong>Envoi d'emails transactionnels</strong> (confirmation, suivi) — base légale : exécution du contrat</li>
+    <li><strong>Envoi de newsletters</strong> — base légale : consentement (opt-in)</li>
+    <li><strong>Amélioration du site</strong> (analytics) — base légale : intérêt légitime / consentement</li>
+    <li><strong>Obligations légales</strong> (comptabilité, fiscalité) — base légale : obligation légale</li>
+  </ul>
+
+  <h2>4. Destinataires des données</h2>
+  <p>Vos données sont transmises uniquement aux partenaires strictement nécessaires :</p>
+  <ul>
+    <li><strong>Stripe</strong> — paiement sécurisé (certifié PCI DSS niveau 1)</li>
+    <li><strong>Transporteurs</strong> — pour la livraison (nom, adresse, téléphone uniquement)</li>
+    <li><strong>Google Analytics</strong> — données de navigation anonymisées</li>
+    <li><strong>Netlify</strong> — hébergement du site</li>
+  </ul>
+  <p>Nous ne vendons jamais vos données à des tiers.</p>
+
+  <h2>5. Durée de conservation</h2>
+  <ul>
+    <li><strong>Données de compte :</strong> durée de vie du compte + 3 ans après clôture</li>
+    <li><strong>Données de commande :</strong> 10 ans (obligation comptable)</li>
+    <li><strong>Données de navigation :</strong> 14 mois (paramétrage Google Analytics)</li>
+    <li><strong>Emails marketing :</strong> jusqu'au désabonnement ou 3 ans sans activité</li>
+  </ul>
+
+  <h2>6. Vos droits (RGPD)</h2>
+  <div class="rights-grid">
+    <div class="right-card"><strong>🔍 Droit d'accès</strong><p>Obtenir une copie de vos données personnelles</p></div>
+    <div class="right-card"><strong>✏️ Droit de rectification</strong><p>Corriger vos données inexactes ou incomplètes</p></div>
+    <div class="right-card"><strong>🗑️ Droit à l'effacement</strong><p>Demander la suppression de vos données</p></div>
+    <div class="right-card"><strong>⏸️ Droit à la limitation</strong><p>Limiter le traitement de vos données</p></div>
+    <div class="right-card"><strong>📦 Droit à la portabilité</strong><p>Recevoir vos données dans un format structuré</p></div>
+    <div class="right-card"><strong>🚫 Droit d'opposition</strong><p>S'opposer au traitement de vos données</p></div>
+  </div>
+  <p>Pour exercer ces droits, contactez-nous à <a href="mailto:contact@lumes.fr">contact@lumes.fr</a>. Nous répondrons dans un délai de 30 jours. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> (Commission Nationale de l'Informatique et des Libertés).</p>
+
+  <h2>7. Sécurité</h2>
+  <p>Nous mettons en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données :</p>
+  <ul>
+    <li>Chiffrement SSL/TLS de toutes les communications</li>
+    <li>Mots de passe hashés (SHA-256 + sel)</li>
+    <li>Accès aux données restreint aux personnes habilitées</li>
+    <li>Données bancaires traitées exclusivement par Stripe (jamais stockées chez nous)</li>
+  </ul>
+
+  <h2>8. Transferts hors UE</h2>
+  <p>Certains de nos prestataires (Netlify, Stripe, Google) sont établis aux États-Unis. Ces transferts sont encadrés par des garanties appropriées (clauses contractuelles types de la Commission européenne, certification Data Privacy Framework).</p>
+
+  <h2>9. Modifications</h2>
+  <p>Nous nous réservons le droit de modifier cette politique de confidentialité. Toute modification sera publiée sur cette page avec la date de mise à jour. En cas de modification substantielle, vous serez informé par email.</p>
+
+  <h2>10. Contact</h2>
+  <p>Pour toute question relative à cette politique : <a href="mailto:contact@lumes.fr">contact@lumes.fr</a></p>
+</div>
+
+<div id="site-footer"></div>
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>initPage();</script>
+</body>
+</html>

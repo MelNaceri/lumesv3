@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Commande sécurisée — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+body{padding-bottom:0}
+.checkout-wrap{max-width:860px;margin:0 auto;padding:calc(var(--nav-h) + 2rem) 1.5rem 3rem}
+.checkout-grid{display:grid;gap:2rem}
+@media(min-width:700px){.checkout-grid{grid-template-columns:1fr 380px}}
+.order-summary{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem;position:sticky;top:calc(var(--nav-h) + 1rem)}
+.summary-title{font-family:var(--fd);font-size:1.2rem;color:var(--star);margin-bottom:1.2rem}
+.summary-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 0;border-bottom:1px solid rgba(200,212,232,.06)}
+.summary-ico{width:40px;height:40px;background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.summary-name{font-size:.82rem;color:var(--star);flex:1}
+.summary-qty{font-size:.72rem;color:var(--mist)}
+.summary-price{font-size:.85rem;color:var(--gold);font-family:var(--fd);white-space:nowrap}
+.summary-total-row{display:flex;justify-content:space-between;padding:.5rem 0;font-size:.82rem;color:var(--mist)}
+.summary-total-row.big{font-family:var(--fd);font-size:1.2rem;color:var(--star);border-top:1px solid rgba(200,212,232,.1);margin-top:.5rem;padding-top:.8rem}
+.summary-total-row.big span:last-child{color:var(--gold);font-size:1.4rem}
+.checkout-box{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem;margin-bottom:1.2rem}
+.checkout-box-title{font-family:var(--fd);font-size:1.1rem;color:var(--star);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.checkout-box-title svg{color:var(--gold)}
+.step-indicator{width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--night);font-size:.68rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+/* Card input styles */
+.card-field{position:relative}
+.card-brand{position:absolute;right:.8rem;top:50%;transform:translateY(-50%);font-size:1.2rem;pointer-events:none}
+.card-secure-note{display:flex;align-items:center;gap:.4rem;font-size:.68rem;color:var(--mist);margin-top:.5rem}
+.card-secure-note svg{color:var(--success);flex-shrink:0}
+.payment-methods{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.pm-opt{flex:1;min-width:80px;background:var(--ink);border:1px solid rgba(200,212,232,.12);border-radius:var(--r);padding:.6rem;text-align:center;font-size:.72rem;color:var(--mist);cursor:pointer;transition:border-color .2s,color .2s}
+.pm-opt:hover,.pm-opt.active{border-color:var(--gold);color:var(--gold)}
+/* Step panels */
+.checkout-step{display:none}
+.checkout-step.active{display:block}
+/* 3D Secure badge */
+.ssl-banner{display:flex;align-items:center;gap:.5rem;background:rgba(76,175,130,.08);border:1px solid rgba(76,175,130,.2);border-radius:var(--r);padding:.6rem .9rem;font-size:.72rem;color:var(--success);margin-bottom:1.2rem}
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-auth"></div>
+
+<div class="checkout-wrap">
+  <!-- Steps indicator -->
+  <div class="checkout-steps">
+    <div class="step active" id="step1-ind"><span class="step-n">1</span><span>Livraison</span></div>
+    <div class="step-sep"></div>
+    <div class="step" id="step2-ind"><span class="step-n">2</span><span>Paiement</span></div>
+    <div class="step-sep"></div>
+    <div class="step" id="step3-ind"><span class="step-n">3</span><span>Confirmation</span></div>
+  </div>
+
+  <div class="checkout-grid">
+    <!-- LEFT: Forms -->
+    <div>
+
+      <!-- STEP 1: DELIVERY -->
+      <div class="checkout-step active" id="step1">
+        <div class="ssl-banner">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Connexion sécurisée SSL 256-bit — vos données sont protégées
+        </div>
+
+        <div class="checkout-box">
+          <div class="checkout-box-title">
+            <span class="step-indicator">1</span>
+            Informations de livraison
+          </div>
+
+          <form id="deliveryForm" novalidate autocomplete="on">
+            <input type="hidden" name="_csrf" id="deliveryCsrf">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="dFirstname">Prénom *</label>
+                <input class="form-input" type="text" id="dFirstname" name="firstname" placeholder="Marie" autocomplete="given-name" required>
+                <div class="form-error" id="dFirstnameErr"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dLastname">Nom *</label>
+                <input class="form-input" type="text" id="dLastname" name="lastname" placeholder="Dupont" autocomplete="family-name" required>
+                <div class="form-error" id="dLastnameErr"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dEmail">Email *</label>
+              <input class="form-input" type="email" id="dEmail" name="email" placeholder="vous@email.com" autocomplete="email" required>
+              <div class="form-error" id="dEmailErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dPhone">Téléphone *</label>
+              <input class="form-input" type="tel" id="dPhone" name="phone" placeholder="+33 6 12 34 56 78" autocomplete="tel" required>
+              <div class="form-error" id="dPhoneErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dAddress">Adresse *</label>
+              <input class="form-input" type="text" id="dAddress" name="address" placeholder="12 rue de la Paix" autocomplete="street-address" required>
+              <div class="form-error" id="dAddressErr"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="dZip">Code postal *</label>
+                <input class="form-input" type="text" id="dZip" name="zip" placeholder="75001" autocomplete="postal-code" maxlength="10" required>
+                <div class="form-error" id="dZipErr"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dCity">Ville *</label>
+                <input class="form-input" type="text" id="dCity" name="city" placeholder="Paris" autocomplete="address-level2" required>
+                <div class="form-error" id="dCityErr"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dCountry">Pays *</label>
+              <select class="form-input" id="dCountry" name="country" autocomplete="country-name" required>
+                <option value="">Choisir un pays</option>
+                <option value="FR" selected>France</option>
+                <option value="BE">Belgique</option>
+                <option value="CH">Suisse</option>
+                <option value="LU">Luxembourg</option>
+                <option value="DE">Allemagne</option>
+                <option value="ES">Espagne</option>
+                <option value="IT">Italie</option>
+              </select>
+              <div class="form-error" id="dCountryErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dComplement">Complément d'adresse</label>
+              <input class="form-input" type="text" id="dComplement" name="complement" placeholder="Bât. A, Apt. 12..." autocomplete="address-line2">
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label" for="dNote">Note pour la livraison</label>
+              <textarea class="form-input" id="dNote" name="note" rows="2" placeholder="Instructions spéciales..." style="resize:vertical;min-height:70px"></textarea>
+            </div>
+            <div style="margin-top:1.2rem">
+              <button class="btn btn-gold btn-full" type="submit" id="toPaymentBtn">
+                Continuer vers le paiement →
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- STEP 2: PAYMENT -->
+      <div class="checkout-step" id="step2">
+        <div class="ssl-banner">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Paiement sécurisé — Cryptage SSL · 3D Secure · PCI DSS Niveau 1
+        </div>
+
+        <div class="checkout-box">
+          <div class="checkout-box-title">
+            <span class="step-indicator">2</span>
+            Méthode de paiement
+          </div>
+
+          <div class="payment-methods">
+            <div class="pm-opt active" data-method="card" id="pmCard">💳 Carte</div>
+            <div class="pm-opt" data-method="paypal" id="pmPaypal">🅿 PayPal</div>
+            <div class="pm-opt" data-method="apple" id="pmApple">🍎 Apple Pay</div>
+            <div class="pm-opt" data-method="virement" id="pmVirement">🏦 Virement</div>
+          </div>
+
+          <!-- CARD FORM -->
+          <div id="cardForm">
+            <form id="paymentForm" novalidate autocomplete="on">
+              <input type="hidden" name="_csrf" id="paymentCsrf">
+              <div class="form-group">
+                <label class="form-label" for="pCardName">Nom sur la carte *</label>
+                <input class="form-input" type="text" id="pCardName" name="cardname" placeholder="MARIE DUPONT" autocomplete="cc-name" required style="text-transform:uppercase">
+                <div class="form-error" id="pCardNameErr"></div>
+              </div>
+              <div class="form-group card-field">
+                <label class="form-label" for="pCardNum">Numéro de carte *</label>
+                <input class="form-input" type="text" id="pCardNum" name="cardnumber" placeholder="1234 5678 9012 3456" autocomplete="cc-number" maxlength="19" required inputmode="numeric">
+                <div class="card-brand" id="cardBrand">💳</div>
+                <div class="form-error" id="pCardNumErr"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="pExpiry">Expiration *</label>
+                  <input class="form-input" type="text" id="pExpiry" name="expiry" placeholder="MM/AA" autocomplete="cc-exp" maxlength="5" required inputmode="numeric">
+                  <div class="form-error" id="pExpiryErr"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pCVV">CVV *</label>
+                  <input class="form-input" type="password" id="pCVV" name="cvv" placeholder="•••" autocomplete="cc-csc" maxlength="4" required inputmode="numeric">
+                  <div class="form-error" id="pCVVErr"></div>
+                </div>
+              </div>
+              <div class="card-secure-note">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Cryptage SSL 256-bit. Vos données bancaires ne sont jamais stockées.
+              </div>
+
+              <div class="form-group" style="margin-top:1.2rem">
+                <label class="form-label" for="pCoupon">Code promo</label>
+                <div style="display:flex;gap:.5rem">
+                  <input class="form-input" type="text" id="pCoupon" placeholder="LUMES20" style="text-transform:uppercase;flex:1">
+                  <button type="button" class="btn btn-ghost" id="applyCoupon" style="white-space:nowrap;padding:.8rem 1rem">Appliquer</button>
+                </div>
+                <div id="couponMsg" style="font-size:.72rem;margin-top:.3rem"></div>
+              </div>
+
+              <!-- RGPD Checkbox -->
+              <div style="display:flex;gap:.7rem;align-items:flex-start;margin:1.2rem 0;font-size:.78rem;color:var(--mist)">
+                <input type="checkbox" id="pRgpd" name="rgpd" style="margin-top:3px;accent-color:var(--gold)" required>
+                <label for="pRgpd">J'accepte les <a href="#" style="color:var(--gold)">CGV</a> et la <a href="#" style="color:var(--gold)">politique de confidentialité</a>. Je consens au traitement de mes données pour le traitement de ma commande.</label>
+              </div>
+              <div class="form-error" id="pRgpdErr"></div>
+
+              <div style="display:flex;flex-direction:column;gap:.7rem">
+                <button class="btn btn-gold btn-full" type="submit" id="payBtn">
+                  🔒 Payer — <span id="payAmount">0,00€</span>
+                </button>
+                <button class="btn btn-ghost btn-full" type="button" id="backToDelivery">← Modifier la livraison</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- PAYPAL -->
+          <div id="paypalForm" style="display:none">
+            <p style="font-size:.85rem;color:var(--mist);margin-bottom:1.2rem">Vous allez être redirigé vers PayPal pour finaliser votre paiement.</p>
+            <button class="btn btn-full" style="background:#0070ba;color:#fff" id="paypalBtn">Continuer avec PayPal</button>
+            <button class="btn btn-ghost btn-full" style="margin-top:.7rem" id="backToDelivery2">← Modifier la livraison</button>
+          </div>
+
+          <!-- APPLE PAY -->
+          <div id="applePayForm" style="display:none">
+            <p style="font-size:.85rem;color:var(--mist);margin-bottom:1.2rem">Apple Pay est disponible sur les appareils Apple compatibles.</p>
+            <button class="btn btn-full" style="background:#000;color:#fff" id="applePayBtn">🍎 Payer avec Apple Pay</button>
+            <button class="btn btn-ghost btn-full" style="margin-top:.7rem" id="backToDelivery3">← Modifier la livraison</button>
+          </div>
+
+          <!-- VIREMENT -->
+          <div id="virementForm" style="display:none">
+            <p style="font-size:.85rem;color:var(--mist);margin-bottom:1rem">Virement bancaire — votre commande sera traitée dès réception du paiement (2-3 jours ouvrés).</p>
+            <div style="background:var(--ink);border-radius:var(--r);padding:1rem;font-size:.82rem;color:var(--moon);line-height:2">
+              <div>IBAN : <strong style="color:var(--gold)">FR76 3000 6000 0112 3456 7890 189</strong></div>
+              <div>BIC : <strong style="color:var(--gold)">BNPAFRPPXXX</strong></div>
+              <div>Référence : <strong style="color:var(--gold)" id="virementRef">LM-XXXX</strong></div>
+            </div>
+            <button class="btn btn-gold btn-full" style="margin-top:1rem" id="confirmVirement">Confirmer la commande par virement</button>
+            <button class="btn btn-ghost btn-full" style="margin-top:.7rem" id="backToDelivery4">← Modifier la livraison</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: CONFIRMATION -->
+      <div class="checkout-step" id="step3">
+        <div class="checkout-box">
+          <div class="order-success" id="confirmationContent">
+            <div class="order-icon">✅</div>
+            <h2 style="font-family:var(--fd);font-size:1.8rem;color:var(--star)">Merci pour votre commande !</h2>
+            <div class="order-num" id="confirmOrderNum">LM-0000</div>
+            <p style="font-size:.85rem;color:var(--mist);margin:.5rem 0 1.5rem;line-height:1.8">Un email de confirmation vous a été envoyé.<br>Livraison estimée : <strong style="color:var(--star)">5–8 jours ouvrés</strong>.</p>
+            <div class="sec-badges" style="justify-content:center;margin-bottom:1.5rem">
+              <div class="sec-badge">📦 Expédié sous 24h</div>
+              <div class="sec-badge">📧 Email envoyé</div>
+              <div class="sec-badge">🛡️ 30j garantie</div>
+            </div>
+            <a href="../index.html" class="btn btn-ghost">← Retour à l'accueil</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Order Summary -->
+    <div>
+      <div class="order-summary">
+        <div class="summary-title">🛒 Votre commande</div>
+        <div id="summaryItems"></div>
+        <div class="divider"></div>
+        <div class="summary-total-row"><span>Sous-total</span><span id="summarySubtotal">0,00€</span></div>
+        <div class="summary-total-row"><span>Livraison</span><span id="summaryShip" style="color:var(--gold)">Offerte 🎁</span></div>
+        <div class="summary-total-row" id="summaryDiscountRow" style="display:none"><span id="summaryDiscountLabel">Promo</span><span id="summaryDiscountVal" style="color:var(--success)">-0,00€</span></div>
+        <div class="summary-total-row big"><span>Total TTC</span><span id="summaryTotal">0,00€</span></div>
+        <div class="sec-badges" style="margin-top:1rem">
+          <div class="sec-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> SSL</div>
+          <div class="sec-badge">🔄 30j remboursé</div>
+          <div class="sec-badge">🇫🇷 SAV FR</div>
+        </div>
+        <div style="font-size:.65rem;color:var(--mist);margin-top:.8rem;text-align:center;line-height:1.6">
+          Paiement 100% sécurisé.<br>Vos données ne sont jamais revendues.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>
+initPage();
+
+
+
+
+const COUPONS = { 'LUMES10':10, 'LUMES20':20, 'WELCOME15':15, 'SOLDES25':25 };
+let appliedCoupon = null;
+let deliveryData = null;
+let orderNum = null;
+
+// Direct init (scripts are at bottom of body, DOM is ready)
+document.getElementById('deliveryCsrf').value = Security.getCSRF();
+document.getElementById('paymentCsrf').value = Security.getCSRF();
+
+  // Render order summary
+  renderSummary();
+
+  // If cart empty, redirect
+  if (Cart.items.length === 0) {
+    Toast.show('Votre panier est vide', 'error');
+    setTimeout(() => goTo('../index.html'), 1500);
+    return;
+  }
+
+  // Fill email if logged
+  const sess = Auth.getSession();
+  if (sess) {
+    const emailField = document.getElementById('dEmail');
+    if (emailField) emailField.value = sess.email;
+    const name = sess.name.split(' ');
+    if (name[0]) document.getElementById('dFirstname').value = name[0];
+    if (name[1]) document.getElementById('dLastname').value = name[1];
+  }
+
+  // Delivery form submit
+  document.getElementById('deliveryForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    if (validateDelivery()) {
+      deliveryData = {
+        firstname: document.getElementById('dFirstname').value.trim(),
+        lastname:  document.getElementById('dLastname').value.trim(),
+        email:     document.getElementById('dEmail').value.trim(),
+        phone:     document.getElementById('dPhone').value.trim(),
+        address:   document.getElementById('dAddress').value.trim(),
+        zip:       document.getElementById('dZip').value.trim(),
+        city:      document.getElementById('dCity').value.trim(),
+        country:   document.getElementById('dCountry').value,
+        complement:document.getElementById('dComplement').value.trim(),
+        note:      document.getElementById('dNote').value.trim(),
+      };
+      goToStep(2);
+    }
+  });
+
+  // Payment method switch
+  document.querySelectorAll('.pm-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.pm-opt').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      ['cardForm','paypalForm','applePayForm','virementForm'].forEach(id => document.getElementById(id).style.display='none');
+      const method = opt.dataset.method;
+      if (method === 'card') document.getElementById('cardForm').style.display='block';
+      else if (method === 'paypal') document.getElementById('paypalForm').style.display='block';
+      else if (method === 'apple') document.getElementById('applePayForm').style.display='block';
+      else if (method === 'virement') { document.getElementById('virementForm').style.display='block'; document.getElementById('virementRef').textContent='LM-'+Math.floor(Math.random()*9000+1000); }
+    });
+  });
+
+  // Back buttons
+  ['backToDelivery','backToDelivery2','backToDelivery3','backToDelivery4'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => goToStep(1));
+  });
+
+  // Card formatting
+  const cardNum = document.getElementById('pCardNum');
+  if (cardNum) {
+    cardNum.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'').slice(0,16);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g,'$1 ');
+      // Card brand detection
+      const brand = document.getElementById('cardBrand');
+      if (v.startsWith('4')) brand.textContent = '💳 Visa';
+      else if (v.startsWith('5') || v.startsWith('2')) brand.textContent = '💳 MC';
+      else if (v.startsWith('3')) brand.textContent = '💳 Amex';
+      else brand.textContent = '💳';
+    });
+  }
+  const expiry = document.getElementById('pExpiry');
+  if (expiry) {
+    expiry.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'');
+      if (v.length >= 2) v = v.slice(0,2) + '/' + v.slice(2,4);
+      e.target.value = v;
+    });
+  }
+
+  // Coupon
+  document.getElementById('applyCoupon')?.addEventListener('click', () => {
+    const code = document.getElementById('pCoupon').value.trim().toUpperCase();
+    const pct = COUPONS[code];
+    const msg = document.getElementById('couponMsg');
+    if (pct) {
+      appliedCoupon = { code, pct };
+      msg.style.color = 'var(--success)';
+      msg.textContent = `✅ Code appliqué : -${pct}%`;
+      renderSummary();
+      Toast.show(`Code ${code} appliqué ! -${pct}%`, 'success');
+    } else {
+      msg.style.color = 'var(--danger)';
+      msg.textContent = 'Code invalide';
+      Toast.show('Code promo invalide', 'error');
+    }
+  });
+
+  // Card payment submit
+  document.getElementById('paymentForm')?.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!validatePayment()) return;
+    const btn = document.getElementById('payBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg style="animation:spin .8s linear infinite" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".2"/><path d="M21 12a9 9 0 00-9-9"/></svg> Traitement en cours…';
+
+    // Simulate payment processing (2s)
+    await new Promise(r => setTimeout(r, 2000));
+    btn.disabled = false;
+    btn.textContent = '🔒 Payer';
+    confirmOrder('card');
+  });
+
+  // PayPal
+  document.getElementById('paypalBtn')?.addEventListener('click', async () => {
+    Toast.show('Redirection PayPal simulée…', 'info');
+    await new Promise(r => setTimeout(r, 1500));
+    confirmOrder('paypal');
+  });
+
+  // Apple Pay
+  document.getElementById('applePayBtn')?.addEventListener('click', async () => {
+    Toast.show('Apple Pay simulé…', 'info');
+    await new Promise(r => setTimeout(r, 1000));
+    confirmOrder('apple_pay');
+  });
+
+  // Virement
+  document.getElementById('confirmVirement')?.addEventListener('click', () => confirmOrder('virement'));
+
+  // Pay button update
+  updatePayAmount();
+})();
+
+function renderSummary() {
+  const items = document.getElementById('summaryItems');
+  if (!items) return;
+  items.innerHTML = Cart.items.map(it => `
+    <div class="summary-item">
+      <div class="summary-ico">${Security.sanitize(it.ico)}</div>
+      <div style="flex:1">
+        <div class="summary-name">${Security.sanitize(it.name)}</div>
+        <div class="summary-qty">Qté ${it.qty}</div>
+      </div>
+      <div class="summary-price">${fmtPrice(it.price * it.qty)}</div>
+    </div>
+  `).join('');
+
+  const sub = Cart.total();
+  const ship = sub >= 40 ? 0 : 5.90;
+  let disc = 0;
+  if (appliedCoupon) disc = sub * appliedCoupon.pct / 100;
+  const total = sub - disc + ship;
+
+  document.getElementById('summarySubtotal').textContent = fmtPrice(sub);
+  document.getElementById('summaryShip').textContent = ship === 0 ? 'Offerte 🎁' : fmtPrice(ship);
+  document.getElementById('summaryTotal').textContent = fmtPrice(total);
+
+  const discRow = document.getElementById('summaryDiscountRow');
+  if (appliedCoupon) {
+    discRow.style.display = 'flex';
+    document.getElementById('summaryDiscountLabel').textContent = `Promo ${appliedCoupon.code}`;
+    document.getElementById('summaryDiscountVal').textContent = `-${fmtPrice(disc)}`;
+  } else {
+    discRow.style.display = 'none';
+  }
+  updatePayAmount();
+}
+
+function updatePayAmount() {
+  const sub = Cart.total();
+  const ship = sub >= 40 ? 0 : 5.90;
+  const disc = appliedCoupon ? sub * appliedCoupon.pct / 100 : 0;
+  const total = sub - disc + ship;
+  const el = document.getElementById('payAmount');
+  if (el) el.textContent = fmtPrice(total);
+}
+
+function goToStep(n) {
+  for (let i = 1; i <= 3; i++) {
+    const step = document.getElementById(`step${i}`);
+    const ind  = document.getElementById(`step${i}-ind`);
+    if (!step || !ind) continue;
+    step.classList.toggle('active', i === n);
+    ind.classList.toggle('active', i === n);
+    ind.classList.toggle('done', i < n);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function validateDelivery() {
+  let ok = true;
+  const fields = [
+    ['dFirstname', v => v.length >= 2, 'Prénom requis (min. 2 caractères)'],
+    ['dLastname',  v => v.length >= 2, 'Nom requis'],
+    ['dEmail',     v => Security.validEmail(v), 'Email invalide'],
+    ['dPhone',     v => Security.validPhone(v), 'Téléphone invalide'],
+    ['dAddress',   v => v.length >= 5, 'Adresse requise'],
+    ['dZip',       v => /^[\d\s\-]{4,10}$/.test(v), 'Code postal invalide'],
+    ['dCity',      v => v.length >= 2, 'Ville requise'],
+    ['dCountry',   v => v.length > 0, 'Pays requis'],
+  ];
+  clearFieldErrors();
+  fields.forEach(([id, fn, msg]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (!fn(el.value.trim())) { showFieldError(id + 'Err', msg); el.classList.add('error'); ok = false; }
+    else el.classList.remove('error');
+  });
+  return ok;
+}
+
+function validatePayment() {
+  let ok = true;
+  clearFieldErrors();
+  const name = document.getElementById('pCardName');
+  const num  = document.getElementById('pCardNum');
+  const exp  = document.getElementById('pExpiry');
+  const cvv  = document.getElementById('pCVV');
+  const rgpd = document.getElementById('pRgpd');
+
+  if (!name?.value.trim()) { showFieldError('pCardNameErr', 'Nom requis'); ok = false; }
+  if (!Security.luhn(num?.value || '')) { showFieldError('pCardNumErr', 'Numéro de carte invalide'); ok = false; }
+
+  const expVal = exp?.value || '';
+  const [mm, yy] = expVal.split('/');
+  const now = new Date();
+  const expDate = new Date(2000 + parseInt(yy||0), parseInt(mm||0) - 1);
+  if (!mm || !yy || expDate < now) { showFieldError('pExpiryErr', 'Date expirée ou invalide'); ok = false; }
+
+  if (!cvv?.value || cvv.value.length < 3) { showFieldError('pCVVErr', 'CVV invalide'); ok = false; }
+  if (!rgpd?.checked) { showFieldError('pRgpdErr', 'Vous devez accepter les CGV'); ok = false; }
+
+  return ok;
+}
+
+function confirmOrder(method) {
+  const sub = Cart.total();
+  const ship = sub >= 40 ? 0 : 5.90;
+  const disc = appliedCoupon ? sub * appliedCoupon.pct / 100 : 0;
+  const total = sub - disc + ship;
+
+  orderNum = 'LM-' + (1000 + Math.floor(Math.random() * 9000));
+  const order = {
+    id: orderNum,
+    date: new Date().toISOString(),
+    status: method === 'virement' ? 'pending' : 'processing',
+    items: [...Cart.items],
+    delivery: deliveryData,
+    payment: { method, total: fmtPrice(total) },
+    coupon: appliedCoupon,
+  };
+
+  // Save to user account if logged
+  if (Auth.isLogged()) Auth.addOrder(order);
+
+  // Save to localStorage as guest
+  const orders = JSON.parse(localStorage.getItem('_lumes_orders') || '[]');
+  orders.unshift(order);
+  localStorage.setItem('_lumes_orders', JSON.stringify(orders.slice(0, 50)));
+
+  Cart.clear();
+
+  document.getElementById('confirmOrderNum').textContent = orderNum;
+  goToStep(3);
+  Toast.show('Commande confirmée ! 🎉', 'success', 5000);
+}
+</script>
+<style>@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}</style>
+</body>
+</html>

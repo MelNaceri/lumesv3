@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Produit — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.breadcrumb{font-size:.7rem;color:var(--mist);display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.breadcrumb a{color:var(--mist);transition:color .2s}.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{color:var(--mist);opacity:.5}
+.prod-panel{display:none}.prod-panel.active{display:block}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+@media(min-width:600px){.related-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<main class="prod-page sec sec-dark">
+  <div class="breadcrumb">
+    <a href="../index.html">Accueil</a><span>/</span>
+    <a href="collection.html">Collection</a><span>/</span>
+    <span id="breadProd">Produit</span>
+  </div>
+
+  <!-- ── GRAVITY PRO ── -->
+  <div class="prod-panel" id="panel-gp">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/8037024/pexels-photo-8037024.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="Gravity Pro masque sommeil acupression">
+        <div class="prod-gallery-overlay"></div>
+        <div class="pbadge" style="top:.8rem;left:.8rem;font-size:.6rem">Best-seller</div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Masque</div>
+      <h1 class="sec-title">Gravity Pro™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★★</div><div class="rating-count">4.9 / 5 (847 avis)</div></div>
+      <div class="big-price">49,90€ <s>79,90€</s></div>
+      <div class="savings">— Économisez 37%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Le Gravity Pro™ est un masque de sommeil à acupression qui stimule doucement les points de pression autour des yeux pour déclencher une relaxation profonde. Mousse mémoire de forme thermorégulante, tissu bambou OEKO-TEX®.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Acupression — endormissement en moins de 10 min</div></li>
+        <li><div class="fi">✓</div><div>Mousse mémoire de forme thermorégulante</div></li>
+        <li><div class="fi">✓</div><div>Tissu bambou certifié OEKO-TEX® — hypoallergénique</div></li>
+        <li><div class="fi">✓</div><div>Blocage lumineux 100%</div></li>
+        <li><div class="fi">✓</div><div>Livraison offerte · Retours 30j gratuits</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button><span class="qhint">2 achetés = −10%</span></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="gp" data-price="49.90">🛒 Ajouter au panier — 49,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="gp">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="desc-gp">Description</button>
+        <button class="tab-btn" data-tab="reviews-gp">Avis (3)</button>
+        <button class="tab-btn" data-tab="delivery-gp">Livraison</button>
+      </div>
+      <div class="tab-panel active" id="tab-desc-gp"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Le masque Gravity Pro™ utilise une technique d'acupression douce pour réduire la tension oculaire et stimuler la production de mélatonine. Idéal pour les insomnies légères, le stress chronique ou simplement pour optimiser la qualité de vos nuits.</p></div>
+      <div class="tab-panel" id="tab-reviews-gp">
+        <div class="review-card"><div class="review-header"><div><div class="reviewer-name">Camille R.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Strasbourg · Il y a 3 jours</div></div><p class="review-text">"5 ans de galère. Le Gravity Pro est la seule chose qui m'a aidée à dormir sans médicament."</p></div>
+        <div class="review-card"><div class="review-header"><div><div class="reviewer-name">Dr. Antoine M.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Paris · Il y a 1 semaine</div></div><p class="review-text">"Médecin aux urgences avec des horaires décalés. Ce masque a transformé la qualité de mes courtes nuits."</p></div>
+        <div class="review-card"><div class="review-header"><div><div class="reviewer-name">Sofia K.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Bordeaux · Il y a 2 semaines</div></div><p class="review-text">"Offert à ma mère — 8h de sommeil d'affilée pour la 1ère fois depuis des années."</p></div>
+      </div>
+      <div class="tab-panel" id="tab-delivery-gp"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🇧🇪 Belgique / Luxembourg</strong> — 7 à 10 jours · 4,90€</p><p><strong style="color:var(--star)">🇨🇭 Suisse</strong> — 8 à 12 jours · 6,90€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+  <!-- ── DRIFT PILLOW ── -->
+  <div class="prod-panel" id="panel-dp">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/271897/pexels-photo-271897.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="Drift Pillow oreiller latex naturel">
+        <div class="prod-gallery-overlay"></div>
+        <div class="pbadge" style="top:.8rem;left:.8rem;font-size:.6rem">Nouveau</div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Oreiller</div>
+      <h1 class="sec-title">Drift Pillow™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★★</div><div class="rating-count">4.8 / 5 (312 avis)</div></div>
+      <div class="big-price">69,90€ <s>110,00€</s></div>
+      <div class="savings">— Économisez 36%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Le Drift Pillow™ en latex naturel Talalay maintient la colonne cervicale dans un alignement optimal toute la nuit. Sa structure alvéolaire assure ventilation et fraîcheur.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Latex naturel Talalay — respirant</div></li>
+        <li><div class="fi">✓</div><div>Hauteur ajustable (insert amovible)</div></li>
+        <li><div class="fi">✓</div><div>Housse bambou lavable à 60°</div></li>
+        <li><div class="fi">✓</div><div>Certifié Ecocert</div></li>
+        <li><div class="fi">✓</div><div>Retours 30j gratuits</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button><span class="qhint">2 achetés = −10%</span></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="dp" data-price="69.90">🛒 Ajouter au panier — 69,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="dp">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav"><button class="tab-btn active" data-tab="desc-dp">Description</button><button class="tab-btn" data-tab="reviews-dp">Avis (2)</button><button class="tab-btn" data-tab="delivery-dp">Livraison</button></div>
+      <div class="tab-panel active" id="tab-desc-dp"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Oreiller haut de gamme en latex naturel Talalay. L'insert amovible permet d'ajuster la hauteur selon votre morphologie. La housse bambou régule la température et reste fraîche toute la nuit.</p></div>
+      <div class="tab-panel" id="tab-reviews-dp"><div class="review-card"><div class="review-header"><div><div class="reviewer-name">Lucas B.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Lyon · Il y a 4 jours</div></div><p class="review-text">"Fini les douleurs cervicales au réveil. Cet oreiller est incroyable."</p></div></div>
+      <div class="tab-panel" id="tab-delivery-dp"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+  <!-- ── NIGHTROLL ── -->
+  <div class="prod-panel" id="panel-nr">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="NightRoll rouleau cervical chauffant">
+        <div class="prod-gallery-overlay"></div>
+        <div class="pbadge" style="top:.8rem;left:.8rem;font-size:.6rem">Viral</div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Massage</div>
+      <h1 class="sec-title">NightRoll™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★★</div><div class="rating-count">4.7 / 5 (528 avis)</div></div>
+      <div class="big-price">39,90€ <s>59,90€</s></div>
+      <div class="savings">— Économisez 33%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Rouleau de massage cervical chauffant à infrarouge lointain. 5 minutes avant le coucher pour décompresser les vertèbres et préparer votre corps au sommeil.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Chaleur infrarouge — 3 niveaux</div></li>
+        <li><div class="fi">✓</div><div>Vibrations 6 intensités</div></li>
+        <li><div class="fi">✓</div><div>Minuterie auto 15/30/45 min</div></li>
+        <li><div class="fi">✓</div><div>Recharge USB-C</div></li>
+        <li><div class="fi">✓</div><div>Housse de transport incluse</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="nr" data-price="39.90">🛒 Ajouter au panier — 39,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="nr">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav"><button class="tab-btn active" data-tab="desc-nr">Description</button><button class="tab-btn" data-tab="reviews-nr">Avis (1)</button><button class="tab-btn" data-tab="delivery-nr">Livraison</button></div>
+      <div class="tab-panel active" id="tab-desc-nr"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Le NightRoll™ combine chaleur infrarouge et vibrations pour décompresser les vertèbres cervicales en seulement 5 minutes. Parfait comme rituel pré-sommeil.</p></div>
+      <div class="tab-panel" id="tab-reviews-nr"><div class="review-card"><div class="review-header"><div><div class="reviewer-name">Pierre M.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Toulouse · Il y a 2 jours</div></div><p class="review-text">"Je l'utilise 10 min avant de dormir. Les tensions disparaissent rapidement."</p></div></div>
+      <div class="tab-panel" id="tab-delivery-nr"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+  <!-- ── SOUNDVEIL ── -->
+  <div class="prod-panel" id="panel-sv">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="SoundVeil masque bluetooth audio">
+        <div class="prod-gallery-overlay"></div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Masque audio</div>
+      <h1 class="sec-title">SoundVeil™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★★</div><div class="rating-count">4.8 / 5 (264 avis)</div></div>
+      <div class="big-price">64,90€ <s>99,00€</s></div>
+      <div class="savings">— Économisez 34%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Masque de sommeil en soie avec haut-parleurs ultra-plats Bluetooth 5.3. 10h d'autonomie, compatible Spotify, Calm, Headspace.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Bluetooth 5.3 — stable jusqu'à 10m</div></li>
+        <li><div class="fi">✓</div><div>Haut-parleurs 16mm ultra-plats</div></li>
+        <li><div class="fi">✓</div><div>Autonomie 10h</div></li>
+        <li><div class="fi">✓</div><div>Micro intégré</div></li>
+        <li><div class="fi">✓</div><div>Compatible toutes plateformes</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="sv" data-price="64.90">🛒 Ajouter au panier — 64,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="sv">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav"><button class="tab-btn active" data-tab="desc-sv">Description</button><button class="tab-btn" data-tab="reviews-sv">Avis (1)</button><button class="tab-btn" data-tab="delivery-sv">Livraison</button></div>
+      <div class="tab-panel active" id="tab-desc-sv"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Le SoundVeil™ combine l'isolation lumineuse totale d'un masque de sommeil premium avec des haut-parleurs ultra-fins pour une expérience audio immersive sans casque encombrant.</p></div>
+      <div class="tab-panel" id="tab-reviews-sv"><div class="review-card"><div class="review-header"><div><div class="reviewer-name">Julie D.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Lille · Il y a 1 semaine</div></div><p class="review-text">"Écouter les méditations guidées en dormant a tout changé pour moi."</p></div></div>
+      <div class="tab-panel" id="tab-delivery-sv"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+  <!-- ── COOLPAD ── -->
+  <div class="prod-panel" id="panel-cp">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/3683053/pexels-photo-3683053.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="CoolPad coussin rafraichissant gel PCM">
+        <div class="prod-gallery-overlay"></div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Température</div>
+      <h1 class="sec-title">CoolPad™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★☆</div><div class="rating-count">4.6 / 5 (189 avis)</div></div>
+      <div class="big-price">29,90€ <s>44,90€</s></div>
+      <div class="savings">— Économisez 33%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Coussin de gel PCM double-face régulant la température corporelle 8h. Côté cooling + côté bambou. Réutilisable en 2h au réfrigérateur.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Gel PCM — régulation 8h</div></li>
+        <li><div class="fi">✓</div><div>Double-face cooling / bambou</div></li>
+        <li><div class="fi">✓</div><div>Réutilisable en 2h</div></li>
+        <li><div class="fi">✓</div><div>Format housse traversin</div></li>
+        <li><div class="fi">✓</div><div>Certifié EN 71</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="cp" data-price="29.90">🛒 Ajouter au panier — 29,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="cp">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav"><button class="tab-btn active" data-tab="desc-cp">Description</button><button class="tab-btn" data-tab="reviews-cp">Avis (1)</button><button class="tab-btn" data-tab="delivery-cp">Livraison</button></div>
+      <div class="tab-panel active" id="tab-desc-cp"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Le gel PCM (Phase Change Material) absorbe la chaleur corporelle et la restitue progressivement, maintenant une température idéale pendant 8h de sommeil.</p></div>
+      <div class="tab-panel" id="tab-reviews-cp"><div class="review-card"><div class="review-header"><div><div class="reviewer-name">Thomas R.</div><div style="color:var(--gold);font-size:.75rem">★★★★☆</div></div><div class="review-date">Marseille · Il y a 5 jours</div></div><p class="review-text">"Efficace pour les nuits chaudes d'été. L'effet dure environ 6-7h chez moi."</p></div></div>
+      <div class="tab-panel" id="tab-delivery-cp"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+  <!-- ── SLEEP KIT ── -->
+  <div class="prod-panel" id="panel-sk">
+    <div class="rv">
+      <div class="prod-gallery">
+        <img src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="Sleep Kit coffret sommeil premium">
+        <div class="prod-gallery-overlay"></div>
+        <div class="pbadge" style="top:.8rem;left:.8rem;font-size:.6rem">Pack</div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="ey">Lumès · Coffret</div>
+      <h1 class="sec-title">Sleep Kit™</h1>
+      <div class="prod-rating"><div class="stars-row">★★★★★</div><div class="rating-count">4.9 / 5 (423 avis)</div></div>
+      <div class="big-price">89,90€ <s>149,00€</s></div>
+      <div class="savings">— Économisez 40%</div>
+      <p style="font-size:.87rem;color:var(--moon);line-height:1.8;margin-bottom:1.5rem">Le coffret sommeil ultime : Gravity Pro™ + SilentPro™ (33dB) + Spray Nuit™ aromathérapie. Écrin cadeau premium recyclé.</p>
+      <ul class="feats">
+        <li><div class="fi">✓</div><div>Gravity Pro™ masque inclus</div></li>
+        <li><div class="fi">✓</div><div>SilentPro™ bouchons 33dB</div></li>
+        <li><div class="fi">✓</div><div>Spray Nuit™ 50ml aromathérapie</div></li>
+        <li><div class="fi">✓</div><div>Écrin cadeau premium recyclé</div></li>
+        <li><div class="fi">✓</div><div>Guide rituel sommeil offert</div></li>
+      </ul>
+      <div class="qty-row"><button class="qb prod-qminus">−</button><span class="prod-qn">1</span><button class="qb prod-qplus">+</button></div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem">
+        <button class="btn btn-gold btn-full prod-add-btn" data-id="sk" data-price="89.90">🛒 Ajouter au panier — 89,90€</button>
+        <button class="btn btn-ghost btn-full prod-buy-btn" data-id="sk">⚡ Acheter maintenant</button>
+      </div>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="tab-nav"><button class="tab-btn active" data-tab="desc-sk">Description</button><button class="tab-btn" data-tab="reviews-sk">Avis (1)</button><button class="tab-btn" data-tab="delivery-sk">Livraison</button></div>
+      <div class="tab-panel active" id="tab-desc-sk"><p style="font-size:.87rem;color:var(--moon);line-height:1.9">Le Sleep Kit™ réunit les essentiels d'un rituel sommeil complet dans un écrin cadeau premium. Idéal pour offrir ou pour s'offrir une transformation complète de ses nuits.</p></div>
+      <div class="tab-panel" id="tab-reviews-sk"><div class="review-card"><div class="review-header"><div><div class="reviewer-name">Isabelle N.</div><div style="color:var(--gold);font-size:.75rem">★★★★★</div></div><div class="review-date">Nice · Il y a 3 jours</div></div><p class="review-text">"Acheté comme cadeau d'anniversaire. Ma sœur est aux anges. Tout est de qualité premium."</p></div></div>
+      <div class="tab-panel" id="tab-delivery-sk"><div style="font-size:.85rem;color:var(--moon);line-height:2"><p><strong style="color:var(--star)">🚚 France</strong> — 5 à 8 jours · Gratuit dès 40€</p><p><strong style="color:var(--star)">🔄 Retours</strong> — 30 jours gratuits</p></div></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- RELATED PRODUCTS — static -->
+<section class="sec sec-deep" id="relatedSec">
+  <div class="ey rv">Vous aimerez aussi</div>
+  <h2 class="sec-title rv">Compléter votre<br><em>rituel sommeil</em></h2>
+  <div class="related-grid">
+    <div class="pcard rv"><div class="pcard-img"><a href="product.html?id=gp"><img src="https://images.pexels.com/photos/8037024/pexels-photo-8037024.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Gravity Pro" loading="lazy"></a></div><div class="pinfo"><div class="pname"><a href="product.html?id=gp" style="color:inherit">Gravity Pro™</a></div><div class="pdesc">Masque acupression</div><div class="pfoot"><div class="pprice">49,90€</div><button class="badd" onclick="window.Cart&&Cart.add('gp')"><span>Ajouter</span></button></div></div></div>
+    <div class="pcard rv"><div class="pcard-img"><a href="product.html?id=nr"><img src="https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="NightRoll" loading="lazy"></a></div><div class="pinfo"><div class="pname"><a href="product.html?id=nr" style="color:inherit">NightRoll™</a></div><div class="pdesc">Rouleau cervical</div><div class="pfoot"><div class="pprice">39,90€</div><button class="badd" onclick="window.Cart&&Cart.add('nr')"><span>Ajouter</span></button></div></div></div>
+    <div class="pcard rv"><div class="pcard-img"><a href="product.html?id=sk"><img src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Sleep Kit" loading="lazy"></a></div><div class="pinfo"><div class="pname"><a href="product.html?id=sk" style="color:inherit">Sleep Kit™</a></div><div class="pdesc">Coffret complet</div><div class="pfoot"><div class="pprice">89,90€</div><button class="badd" onclick="window.Cart&&Cart.add('sk')"><span>Ajouter</span></button></div></div></div>
+  </div>
+</section>
+
+<div class="sticky">
+  <div>
+    <div class="sticky-price" id="stickyPrice">49,90€</div>
+    <div class="sticky-sub" id="stickyName">Gravity Pro™</div>
+  </div>
+  <button class="sticky-btn" id="stickyCTA">Ajouter au panier →</button>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>
+initPage();
+
+// Show the right product panel based on ?id= param
+var id = (new URLSearchParams(window.location.search)).get('id') || 'gp';
+var panel = document.getElementById('panel-' + id);
+if (panel) {
+  panel.classList.add('active');
+  panel.style.display = 'grid';
+  panel.style.gap = '2rem';
+  // Update breadcrumb
+  var names = {gp:'Gravity Pro™',dp:'Drift Pillow™',nr:'NightRoll™',sv:'SoundVeil™',cp:'CoolPad™',sk:'Sleep Kit™'};
+  var prices = {gp:'49,90€',dp:'69,90€',nr:'39,90€',sv:'64,90€',cp:'29,90€',sk:'89,90€'};
+  var bread = document.getElementById('breadProd'); if(bread) bread.textContent = names[id] || 'Produit';
+  var sp = document.getElementById('stickyPrice'); if(sp) sp.textContent = prices[id] || '';
+  var sn = document.getElementById('stickyName'); if(sn) sn.textContent = names[id] || '';
+  document.title = (names[id] || 'Produit') + ' — LUMÈS';
+}
+
+// Qty + Add to cart
+var qty = 1;
+document.querySelectorAll('.prod-qminus').forEach(function(b){ b.addEventListener('click', function(){ qty=Math.max(1,qty-1); updateQtyDisplay(); }); });
+document.querySelectorAll('.prod-qplus').forEach(function(b){ b.addEventListener('click', function(){ qty=Math.min(10,qty+1); updateQtyDisplay(); }); });
+function updateQtyDisplay(){
+  document.querySelectorAll('.prod-qn').forEach(function(el){ el.textContent=qty; });
+  document.querySelectorAll('.prod-add-btn').forEach(function(b){
+    var p = parseFloat(b.dataset.price);
+    var total = qty>=2 ? p*qty*0.9 : p*qty;
+    b.textContent = '🛒 Ajouter au panier — ' + total.toFixed(2).replace('.',',') + '€';
+  });
+}
+document.querySelectorAll('.prod-add-btn').forEach(function(b){
+  b.addEventListener('click', function(){ for(var i=0;i<qty;i++) Cart.add(b.dataset.id); });
+});
+document.querySelectorAll('.prod-buy-btn').forEach(function(b){
+  b.addEventListener('click', function(){ Cart.add(b.dataset.id); goTo('checkout.html'); });
+});
+document.getElementById('stickyCTA') && document.getElementById('stickyCTA').addEventListener('click', function(){ Cart.add(id); });
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var panel = btn.closest('[id^="panel-"], .prod-panel, main');
+    panel.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    panel.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+    var target = document.getElementById('tab-' + btn.dataset.tab);
+    if(target) target.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

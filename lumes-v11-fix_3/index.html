@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Lumès — Accessoires de sommeil premium. Masque acupression, oreiller latex, coffrets bien-être. -37% sur le Gravity Pro™. Livraison offerte.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="LUMÈS — Révèle ton sommeil idéal">
+<meta property="og:description" content="Accessoires de sommeil premium. Endormissement en 10 min garanti.">
+<meta property="og:image" content="https://images.pexels.com/photos/8037024/pexels-photo-8037024.jpeg?w=1200">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0C0F14">
+<title>LUMÈS — Révèle ton sommeil idéal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/lumes.css">
+<style>
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes auroraShift{0%{background:radial-gradient(ellipse 80% 50% at 45% -5%,rgba(91,127,166,.18),transparent 70%)}50%{background:radial-gradient(ellipse 100% 60% at 55% 5%,rgba(91,127,166,.22),transparent 70%)}100%{background:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(201,169,110,.1),transparent 60%)}}
+@keyframes blobMorph{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}33%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}66%{border-radius:70% 30% 40% 60%/40% 70% 60% 30%}}
+@keyframes orbitSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<!-- HERO -->
+<section class="hero sec-dark" id="hero-section" style="position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 1.5rem 3rem;overflow:hidden">
+  <div style="position:absolute;inset:0;animation:auroraShift 10s ease-in-out infinite alternate;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(91,127,166,.18),transparent 70%)"></div>
+  <div class="stars-bg" id="stars"></div>
+  <div style="position:absolute;top:50%;left:50%;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;border:1px solid rgba(201,169,110,.06);animation:orbitSpin 30s linear infinite;pointer-events:none;z-index:0">
+    <span style="position:absolute;top:-3px;left:50%;width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px rgba(201,169,110,.8);transform:translateX(-50%)"></span>
+  </div>
+  <div style="position:relative;z-index:1;max-width:580px;width:100%">
+    <p style="font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.7rem;animation:fu .8s ease both .2s">
+      <span style="width:22px;height:1px;background:var(--gold);opacity:.5"></span>Sleep Technology · Bien-être · 2026<span style="width:22px;height:1px;background:var(--gold);opacity:.5"></span>
+    </p>
+    <h1 style="font-family:var(--fd);font-size:clamp(2.5rem,11vw,5.5rem);font-weight:300;line-height:1.05;color:var(--star);margin-bottom:1rem;animation:fu .8s ease both .35s">Révèle ton<br><em>sommeil idéal</em></h1>
+    <p style="font-size:.93rem;color:var(--mist);max-width:400px;margin:0 auto 1.6rem;line-height:1.8;animation:fu .8s ease both .5s">Des accessoires de sommeil premium pour transformer vos nuits — moins de stress, plus de récupération.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.8rem;animation:fu .8s ease both .65s">
+      <a href="#produits" class="btn btn-gold">Découvrir la collection</a>
+      <a href="#bienfaits" class="btn btn-ghost">En savoir plus</a>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;animation:fu .8s ease both .8s">
+      <span style="font-size:.75rem;color:var(--mist)">⭐ 4.9/5 — 2 300+ avis vérifiés</span>
+      <span style="font-size:.75rem;color:var(--mist)">🚚 Livraison 5–8j en France</span>
+      <span style="font-size:.75rem;color:var(--mist)">🔄 Retours 30 jours offerts</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-stat rv"><span class="proof-n">2 300+</span><span class="proof-l">Clients satisfaits</span></div>
+  <div class="proof-stat rv"><span class="proof-n">4.9★</span><span class="proof-l">Note moyenne</span></div>
+  <div class="proof-stat rv"><span class="proof-n">87%</span><span class="proof-l">Dorment mieux dès J1</span></div>
+  <div class="proof-stat rv"><span class="proof-n">30j</span><span class="proof-l">Garantie satisfait</span></div>
+</div>
+
+<!-- PRODUIT VEDETTE -->
+<section class="sec sec-dark" id="produit-vedette">
+  <div class="rv">
+    <div id="featuredImgWrap" style="position:relative;width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--ink),var(--deep));border-radius:var(--r);overflow:hidden;margin-bottom:1.5rem">
+      <img src="https://images.pexels.com/photos/8037024/pexels-photo-8037024.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" alt="Masque Gravity Pro" loading="lazy" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,15,20,.1),rgba(12,15,20,.55))"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(201,169,110,.15),transparent 60%);opacity:0;transition:opacity .4s" id="imgSpotlight"></div>
+      <div style="position:absolute;bottom:.8rem;right:.8rem;background:rgba(19,23,32,.93);border:1px solid rgba(200,212,232,.1);padding:.6rem .9rem;border-radius:var(--r)">
+        <div style="color:var(--gold);font-size:.72rem;margin-bottom:.15rem">★★★★★</div>
+        <div style="font-size:.68rem;color:var(--moon)">"Enfin je dors toute la nuit"</div>
+        <div style="font-size:.58rem;color:var(--mist);margin-top:.15rem">— Marie L., Lyon · Vérifié</div>
+      </div>
+    </div>
+  </div>
+  <div class="rv">
+    <div class="ey">Produit vedette</div>
+    <h2 class="sec-title">Masque Sommeil<br><em>Gravity Pro™</em></h2>
+    <div class="big-price">49,90€ <s>79,90€</s></div>
+    <div class="savings">— Économisez 37% · Offre limitée</div>
+    <ul class="feats">
+      <li><div class="fi">✓</div><div>Acupression — endormissement en moins de 10 min</div></li>
+      <li><div class="fi">✓</div><div>Mousse mémoire de forme thermorégulante</div></li>
+      <li><div class="fi">✓</div><div>Tissu bambou certifié OEKO-TEX® — hypoallergénique</div></li>
+      <li><div class="fi">✓</div><div>Blocage lumineux 100%</div></li>
+      <li><div class="fi">✓</div><div>Livraison offerte · Retours 30j gratuits</div></li>
+    </ul>
+    <div style="display:flex;flex-direction:column;gap:.8rem">
+      <div class="qty-row">
+        <button class="qb" id="qminus" aria-label="Diminuer">−</button>
+        <span class="qn" id="qty">1</span>
+        <button class="qb" id="qplus" aria-label="Augmenter">+</button>
+        <span class="qhint">2 achetés = −10%</span>
+      </div>
+      <button class="btn btn-gold btn-full" id="cbtn">🛒 Ajouter au panier — 49,90€</button>
+      <a href="pages/product.html?id=gp" class="btn btn-ghost btn-full">Voir la fiche complète →</a>
+      <div class="guar">🔒 SSL · 🛡️ 30j garantie · 📦 Livraison 5–8j</div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="sec sec-deep" id="produits">
+  <div class="tc rv" style="margin-bottom:2rem">
+    <div class="ey ey-c">Notre collection</div>
+    <h2 class="sec-title">Chaque produit,<br><em>une transformation</em></h2>
+  </div>
+  <div class="pgrid">
+
+    <!-- Gravity Pro -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <div class="pbadge">Best-seller</div>
+        <a href="pages/product.html?id=gp">
+          <img src="https://images.pexels.com/photos/8037024/pexels-photo-8037024.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Gravity Pro masque sommeil" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=gp" style="color:inherit">Gravity Pro™</a></div>
+        <div class="pdesc">Masque lestée acupression. Endormissement garanti.</div>
+        <div class="pfoot">
+          <div class="pprice">49,90€ <s>79,90€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('gp');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drift Pillow -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <div class="pbadge">Nouveau</div>
+        <a href="pages/product.html?id=dp">
+          <img src="https://images.pexels.com/photos/271897/pexels-photo-271897.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Drift Pillow oreiller latex" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=dp" style="color:inherit">Drift Pillow™</a></div>
+        <div class="pdesc">Oreiller latex naturel — alignement cervical parfait.</div>
+        <div class="pfoot">
+          <div class="pprice">69,90€ <s>110,00€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('dp');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NightRoll -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <div class="pbadge">Viral</div>
+        <a href="pages/product.html?id=nr">
+          <img src="https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="NightRoll rouleau cervical" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=nr" style="color:inherit">NightRoll™</a></div>
+        <div class="pdesc">Rouleau cervical chauffant. Décompression en 5 min.</div>
+        <div class="pfoot">
+          <div class="pprice">39,90€ <s>59,90€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('nr');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SoundVeil -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <a href="pages/product.html?id=sv">
+          <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="SoundVeil masque bluetooth" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=sv" style="color:inherit">SoundVeil™</a></div>
+        <div class="pdesc">Masque bluetooth intégré — méditations et bruits blancs.</div>
+        <div class="pfoot">
+          <div class="pprice">64,90€ <s>99,00€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('sv');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CoolPad -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <a href="pages/product.html?id=cp">
+          <img src="https://images.pexels.com/photos/3683053/pexels-photo-3683053.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="CoolPad coussin rafraichissant" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=cp" style="color:inherit">CoolPad™</a></div>
+        <div class="pdesc">Coussin réfrigérant réutilisable. Effet immédiat.</div>
+        <div class="pfoot">
+          <div class="pprice">29,90€ <s>44,90€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('cp');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sleep Kit -->
+    <div class="pcard rv">
+      <div class="pcard-img">
+        <div class="pbadge">Pack</div>
+        <a href="pages/product.html?id=sk">
+          <img src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Sleep Kit coffret sommeil" loading="lazy">
+        </a>
+      </div>
+      <div class="pinfo">
+        <div class="pname"><a href="pages/product.html?id=sk" style="color:inherit">Sleep Kit™</a></div>
+        <div class="pdesc">Coffret complet : masque + bouchons + spray relaxant.</div>
+        <div class="pfoot">
+          <div class="pprice">89,90€ <s>149,00€</s></div>
+          <button class="badd" onclick="window.Cart&&Cart.add('sk');this.textContent='✓';var b=this;setTimeout(function(){b.textContent='Ajouter'},1600)"><span>Ajouter</span></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="pages/collection.html" class="btn btn-ghost">Voir tous les produits →</a>
+  </div>
+</section>
+
+<!-- BIENFAITS -->
+<section class="sec sec-dark" id="bienfaits">
+  <div class="ey rv">Pourquoi Lumès</div>
+  <h2 class="sec-title rv">La science du<br><em>sommeil profond</em></h2>
+  <p class="rv" style="color:var(--mist);font-size:.87rem;margin-bottom:2.2rem;line-height:1.8">Collaboré avec des spécialistes pour créer des produits qui agissent vraiment.</p>
+  <div class="rv" style="display:flex;gap:1rem;margin-bottom:1.8rem"><div style="font-family:var(--fd);font-size:2.3rem;font-weight:300;color:rgba(201,169,110,.18);line-height:1;flex-shrink:0;min-width:2.3rem">01</div><div><h3 style="font-family:var(--fd);font-size:1.15rem;color:var(--star);margin-bottom:.35rem">Endormissement en 10 min</h3><p style="font-size:.84rem;color:var(--mist);line-height:1.7">La pression douce stimule le système parasympathique et réduit l'anxiété au coucher.</p></div></div>
+  <div class="rv" style="display:flex;gap:1rem;margin-bottom:1.8rem"><div style="font-family:var(--fd);font-size:2.3rem;font-weight:300;color:rgba(201,169,110,.18);line-height:1;flex-shrink:0;min-width:2.3rem">02</div><div><h3 style="font-family:var(--fd);font-size:1.15rem;color:var(--star);margin-bottom:.35rem">Réveil sans douleurs</h3><p style="font-size:.84rem;color:var(--mist);line-height:1.7">L'alignement cervical optimal prévient les tensions nocturnes — corps léger le matin.</p></div></div>
+  <div class="rv" style="display:flex;gap:1rem;margin-bottom:1.8rem"><div style="font-family:var(--fd);font-size:2.3rem;font-weight:300;color:rgba(201,169,110,.18);line-height:1;flex-shrink:0;min-width:2.3rem">03</div><div><h3 style="font-family:var(--fd);font-size:1.15rem;color:var(--star);margin-bottom:.35rem">Énergie multipliée</h3><p style="font-size:.84rem;color:var(--mist);line-height:1.7">Sommeil profond = jusqu'à 40% de productivité en plus. Dès la 1ère semaine.</p></div></div>
+</section>
+
+<!-- AVIS -->
+<section class="sec sec-deep" id="avis">
+  <div class="tc rv" style="margin-bottom:1.8rem">
+    <div class="ey ey-c">Témoignages</div>
+    <h2 class="sec-title">Ils ont retrouvé<br><em>le sommeil</em></h2>
+  </div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06);margin-bottom:.9rem"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">5 ans de galère. Le masque Gravity Pro est la seule chose qui m'a aidée à dormir sans médicament.</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">👩</div><div><span style="font-size:.8rem;color:var(--star);display:block">Camille R.</span><span style="font-size:.66rem;color:var(--gold)">★★★★★</span><span style="font-size:.66rem;color:var(--mist)"> · Strasbourg</span></div></div></div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06);margin-bottom:.9rem"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">Médecin aux urgences. Le SoundVeil avec mes bruits blancs a sauvé mes nuits avec des horaires décalés.</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">👨‍⚕️</div><div><span style="font-size:.8rem;color:var(--star);display:block">Dr. Antoine M.</span><span style="font-size:.66rem;color:var(--gold)">★★★★★</span><span style="font-size:.66rem;color:var(--mist)"> · Paris</span></div></div></div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06);margin-bottom:.9rem"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">Offert à ma mère : 8 heures de sommeil d'affilée pour la première fois depuis des années. Les larmes aux yeux.</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">👩‍💼</div><div><span style="font-size:.8rem;color:var(--star);display:block">Sofia K.</span><span style="font-size:.66rem;color:var(--gold)">★★★★★</span><span style="font-size:.66rem;color:var(--mist)"> · Bordeaux</span></div></div></div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06);margin-bottom:.9rem"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">Grâce au masque Gravity Pro, mes nuits sont bien plus douces — même quand je termine à 0/14 au classement, je récupère comme un champion.</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">🎮</div><div><span style="font-size:.8rem;color:var(--star);display:block">Mickaël L.</span><span style="font-size:.66rem;color:var(--gold)">★★★★★</span><span style="font-size:.66rem;color:var(--mist)"> · Avis vérifié</span></div></div></div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06);margin-bottom:.9rem"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">Avant, je ne pouvais pas m'empêcher de fumer avant de dormir. Grâce au NightRoll, le rituel a changé — fini le joint du soir !</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">🧘</div><div><span style="font-size:.8rem;color:var(--star);display:block">Gianni A.</span><span style="font-size:.66rem;color:var(--gold)">★★★★★</span><span style="font-size:.66rem;color:var(--mist)"> · Avis vérifié</span></div></div></div>
+
+  <div class="rv" style="background:var(--ink);padding:1.4rem;border-radius:var(--r);border:1px solid rgba(200,212,232,.06)"><div style="font-family:var(--fd);font-size:2.8rem;color:var(--gold);opacity:.3;line-height:1">"</div><p style="font-size:.86rem;color:var(--moon);line-height:1.8;margin-bottom:1rem;font-style:italic">Vous avez acheté sur ce site ? Je vais chez But.</p><div style="display:flex;align-items:center;gap:.7rem"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));display:flex;align-items:center;justify-content:center;font-size:.95rem">👨</div><div><span style="font-size:.8rem;color:var(--star);display:block">Giovanni F.</span><span style="font-size:.66rem;color:var(--gold)">★★★★☆</span><span style="font-size:.66rem;color:var(--mist)"> · Avis vérifié</span></div></div></div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sec-dark" id="faq">
+  <div class="rv" style="margin-bottom:1.8rem">
+    <div class="ey">Questions fréquentes</div>
+    <h2 class="sec-title">Vous avez des<br><em style="padding-right:.15em">questions ?</em></h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item rv"><button class="faq-q">Les produits conviennent-ils à tous ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Oui. Que vous souffriez d'insomnie légère, de stress chronique, de tensions cervicales ou que vous souhaitiez simplement optimiser la qualité de vos nuits, nos produits s'adaptent à tous les profils. Si vous avez une condition médicale sérieuse, consultez votre médecin au préalable.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Quand verrai-je des résultats ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">87% de nos clients rapportent une amélioration dès la première nuit. Pour des résultats durables, un usage régulier pendant 2 semaines est recommandé. La plupart constatent une transformation complète de leur sommeil dans ce délai.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Comment fonctionne la garantie 30 jours ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Si vous n'êtes pas satisfait dans les 30 jours suivant la réception, contactez-nous à contact@lumes.fr avec votre numéro de commande. Nous vous envoyons une étiquette de retour prépayée et procédons au remboursement intégral sous 48h après réception du colis.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Quels sont les délais de livraison ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">France métropolitaine : 5 à 8 jours ouvrés, livraison offerte dès 40€. Belgique et Luxembourg : 7 à 10 jours (4,90€). Suisse : 8 à 12 jours (6,90€). Vous recevrez un email de suivi avec le numéro de tracking dès l'expédition.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Les matériaux sont-ils certifiés ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Tous nos textiles sont certifiés OEKO-TEX® Standard 100, garantissant l'absence de substances nocives. Nos produits sont conformes aux normes CE européennes. Le latex du Drift Pillow™ est certifié Ecocert. Nous privilégions des matières hypoallergéniques pour les peaux sensibles.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Comment entretenir les produits ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Le masque Gravity Pro™ se nettoie à la main à l'eau tiède avec un savon doux. La housse du Drift Pillow™ est lavable en machine à 60°C. Le NightRoll™ s'essuie avec un chiffon légèrement humide. Évitez le sèche-linge pour tous les produits textiles.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Puis-je passer commande sans créer de compte ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Oui, il est possible de commander en tant qu'invité sans créer de compte. Cependant, un compte vous permet de suivre vos commandes, sauvegarder votre adresse de livraison et bénéficier d'offres exclusives réservées aux membres.</div></div></div>
+
+    <div class="faq-item rv"><button class="faq-q">Le paiement est-il sécurisé ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Absolument. Toutes les transactions sont chiffrées en SSL 256-bit. Nous acceptons les cartes bancaires (Visa, Mastercard) et Apple Pay via Stripe, certifié PCI DSS niveau 1. Vos données bancaires ne sont jamais stockées sur nos serveurs.</div></div></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<div class="sticky">
+  <div>
+    <div class="sticky-price">49,90€</div>
+    <div class="sticky-sub">Gravity Pro™ · Livraison offerte</div>
+  </div>
+  <button class="sticky-btn" id="stickyCTA">Commander →</button>
+</div>
+
+<script src="js/integrations.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/lumes.js"></script>
+<script>
+initPage({ isRoot: true });
+
+// Qty controls for featured product
+var qty = 1;
+function updateQty() {
+  var el = document.getElementById('qty');
+  if (el) el.textContent = qty;
+  var price = qty >= 2 ? 49.90 * qty * 0.9 : 49.90 * qty;
+  var btn = document.getElementById('cbtn');
+  if (btn) btn.textContent = '🛒 Ajouter au panier — ' + (price.toFixed(2).replace('.',',') + '€');
+}
+var qm = document.getElementById('qminus');
+var qp = document.getElementById('qplus');
+var cb = document.getElementById('cbtn');
+var sc = document.getElementById('stickyCTA');
+if (qm) qm.addEventListener('click', function() { qty = Math.max(1, qty-1); updateQty(); });
+if (qp) qp.addEventListener('click', function() { qty = Math.min(10, qty+1); updateQty(); });
+if (cb) cb.addEventListener('click', function() { for(var i=0;i<qty;i++) Cart.add('gp'); });
+if (sc) sc.addEventListener('click', function() { Cart.add('gp'); });
+
+// Spotlight on featured image
+var imgWrap = document.getElementById('featuredImgWrap');
+if (imgWrap) {
+  imgWrap.addEventListener('mousemove', function(e) {
+    var r = imgWrap.getBoundingClientRect();
+    var spot = document.getElementById('imgSpotlight');
+    if (spot) {
+      spot.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      spot.style.setProperty('--my', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      spot.style.opacity = '1';
+    }
+  });
+  imgWrap.addEventListener('mouseleave', function() {
+    var spot = document.getElementById('imgSpotlight');
+    if (spot) spot.style.opacity = '0';
+  });
+}
+</script>
+</body>
+</html>

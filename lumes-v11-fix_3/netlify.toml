@@ -1,0 +1,48 @@
+[[redirects]]
+  from = "/pages/product"
+  to = "/pages/product.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/collection"
+  to = "/pages/collection.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/checkout"
+  to = "/pages/checkout.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/profile"
+  to = "/pages/profile.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/contact"
+  to = "/pages/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/legal"
+  to = "/pages/legal.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/cgv"
+  to = "/pages/cgv.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/privacy"
+  to = "/pages/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/pages/cookies"
+  to = "/pages/cookies.html"
+  status = 200
+
+[build]
+  publish = "."
+

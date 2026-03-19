@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+.contact-wrap{max-width:680px;margin:0 auto;padding:calc(var(--nav-h) + 3rem) 1.5rem 4rem}
+.contact-grid{display:grid;gap:1.5rem}
+@media(min-width:620px){.contact-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.contact-info{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem}
+.contact-form-box{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem}
+.cinfo-item{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1.2rem}
+.cinfo-ico{width:36px;height:36px;border-radius:var(--r);background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cinfo-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:.2rem}
+.cinfo-val{font-size:.85rem;color:var(--star)}
+.cinfo-val a{color:var(--gold)}
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<div class="contact-wrap">
+  <div class="ey rv" style="margin-bottom:.5rem">Nous contacter</div>
+  <h1 class="sec-title rv" style="margin-bottom:.5rem">Une question ?<br><em>On est là.</em></h1>
+  <p class="rv" style="font-size:.87rem;color:var(--mist);margin-bottom:2rem">Réponse garantie sous 24h ouvrées.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info rv">
+      <h3 style="font-family:var(--fd);font-size:1.1rem;color:var(--star);margin-bottom:1.2rem">Nos coordonnées</h3>
+      <div class="cinfo-item">
+        <div class="cinfo-ico">✉️</div>
+        <div><div class="cinfo-label">Email</div><div class="cinfo-val"><a href="mailto:contact@lumes.fr">contact@lumes.fr</a></div></div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-ico">📞</div>
+        <div><div class="cinfo-label">Téléphone</div><div class="cinfo-val">+33 6 00 00 00 00<br><span style="font-size:.72rem;color:var(--mist)">Lun–Ven 9h–18h</span></div></div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-ico">📍</div>
+        <div><div class="cinfo-label">Adresse</div><div class="cinfo-val">12 rue de la Paix<br>75001 Paris, France</div></div>
+      </div>
+      <div class="cinfo-item" style="margin-bottom:0">
+        <div class="cinfo-ico">⏱️</div>
+        <div><div class="cinfo-label">Délai de réponse</div><div class="cinfo-val">Sous 24h ouvrées</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <h4 style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);margin-bottom:.8rem">Suivez-nous</h4>
+      <div style="display:flex;gap:.5rem">
+        <a href="#" class="fsoc" aria-label="Instagram">📸</a>
+        <a href="#" class="fsoc" aria-label="TikTok">📱</a>
+        <a href="#" class="fsoc" aria-label="Facebook">👥</a>
+      </div>
+    </div>
+
+    <div class="contact-form-box rv">
+      <h3 style="font-family:var(--fd);font-size:1.1rem;color:var(--star);margin-bottom:1.2rem">Envoyer un message</h3>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="cName">Votre nom *</label>
+          <input class="form-input" type="text" id="cName" placeholder="Marie Dupont" required>
+          <div class="form-error" id="cNameErr"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cEmail">Email *</label>
+          <input class="form-input" type="email" id="cEmail" placeholder="vous@email.com" required>
+          <div class="form-error" id="cEmailErr"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cSubject">Sujet *</label>
+          <select class="form-input" id="cSubject" required>
+            <option value="">Choisir un sujet</option>
+            <option value="commande">Suivi de commande</option>
+            <option value="retour">Retour / remboursement</option>
+            <option value="produit">Question produit</option>
+            <option value="technique">Problème technique</option>
+            <option value="autre">Autre</option>
+          </select>
+          <div class="form-error" id="cSubjectErr"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cMessage">Message *</label>
+          <textarea class="form-input" id="cMessage" rows="4" placeholder="Décrivez votre demande…" style="resize:vertical;min-height:100px" required></textarea>
+          <div class="form-error" id="cMessageErr"></div>
+        </div>
+        <div style="font-size:.7rem;color:var(--mist);margin-bottom:1rem">
+          En envoyant ce formulaire, vous acceptez notre <a href="privacy.html" style="color:var(--gold)">politique de confidentialité</a>.
+        </div>
+        <button class="btn btn-gold btn-full" type="submit" id="contactBtn">Envoyer le message</button>
+      </form>
+      <div id="contactSuccess" style="display:none;text-align:center;padding:1.5rem 0">
+        <div style="font-size:2.5rem;margin-bottom:.8rem">✅</div>
+        <h4 style="font-family:var(--fd);font-size:1.2rem;color:var(--star);margin-bottom:.5rem">Message envoyé !</h4>
+        <p style="font-size:.84rem;color:var(--mist)">Nous vous répondrons sous 24h ouvrées.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ rapide -->
+  <div class="rv" style="margin-top:3rem">
+    <h2 class="sec-title" style="font-size:1.5rem;margin-bottom:1.5rem">Questions fréquentes</h2>
+    <div class="faq-wrap">
+      <div class="faq-item"><button class="faq-q">Quel est le délai de livraison ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">France : 5–8 jours ouvrés. Belgique/Luxembourg : 7–10j. Suisse : 8–12j. Livraison offerte dès 40€.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Comment fonctionne la garantie 30j ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Contactez-nous par email avec votre numéro de commande. On vous envoie une étiquette retour gratuite et remboursons sous 5j.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Mon paiement est-il sécurisé ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Oui. Paiement via Stripe (PCI DSS niveau 1). Vos données bancaires ne transitent jamais par nos serveurs.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Puis-je modifier ou annuler ma commande ?<div class="faq-ico">+</div></button><div class="faq-a"><div class="faq-ai">Oui, si elle n'est pas encore expédiée. Contactez-nous rapidement par email avec votre numéro de commande.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>
+initPage();
+
+
+
+document.getElementById('contactForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  clearFieldErrors();
+  const name    = document.getElementById('cName').value.trim();
+  const email   = document.getElementById('cEmail').value.trim();
+  const subject = document.getElementById('cSubject').value;
+  const message = document.getElementById('cMessage').value.trim();
+  let ok = true;
+  if (name.length < 2)              { showFieldError('cNameErr',    'Nom requis'); ok = false; }
+  if (!Security.validEmail(email))  { showFieldError('cEmailErr',   'Email invalide'); ok = false; }
+  if (!subject)                     { showFieldError('cSubjectErr', 'Sujet requis'); ok = false; }
+  if (message.length < 10)          { showFieldError('cMessageErr', 'Message trop court'); ok = false; }
+  if (!ok) return;
+
+  const btn = document.getElementById('contactBtn');
+  btn.disabled = true; btn.textContent = 'Envoi…';
+  await new Promise(r => setTimeout(r, 1000));
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+  Toast.show('Message envoyé ! Réponse sous 24h.', 'success');
+});
+</script>
+</body>
+</html>

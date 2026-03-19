@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Mon compte — LUMÈS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/lumes.css">
+<style>
+body{padding-bottom:0}
+.profile-wrap{max-width:900px;margin:0 auto;padding:calc(var(--nav-h) + 2rem) 1.5rem 3rem}
+.profile-grid{display:grid;gap:1.5rem}
+@media(min-width:700px){.profile-grid{grid-template-columns:220px 1fr}}
+.profile-sidebar{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem;align-self:start;position:sticky;top:calc(var(--nav-h) + 1rem)}
+.profile-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--aurora),var(--ink));border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1rem}
+.profile-name{text-align:center;font-family:var(--fd);font-size:1.2rem;color:var(--star);margin-bottom:.2rem}
+.profile-email{text-align:center;font-size:.72rem;color:var(--mist);margin-bottom:1.2rem}
+.profile-main{background:var(--deep);border:1px solid rgba(200,212,232,.08);border-radius:8px;padding:1.5rem}
+.section-title{font-family:var(--fd);font-size:1.3rem;color:var(--star);margin-bottom:1.5rem;padding-bottom:.7rem;border-bottom:1px solid rgba(200,212,232,.08)}
+.order-card{background:var(--ink);border:1px solid rgba(200,212,232,.06);border-radius:var(--r);padding:1rem;margin-bottom:.8rem}
+.order-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;flex-wrap:wrap;gap:.4rem}
+.order-id{font-family:var(--fd);font-size:1rem;color:var(--gold)}
+.order-date{font-size:.72rem;color:var(--mist)}
+.order-items{font-size:.8rem;color:var(--moon);margin-bottom:.5rem}
+.order-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem}
+.order-total{font-family:var(--fd);color:var(--gold)}
+em{font-style:italic;background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 40%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="site-cart"></div>
+<div id="site-auth"></div>
+
+<div class="profile-wrap">
+  <div class="ey" style="margin-bottom:.5rem">Mon espace</div>
+  <h1 class="sec-title" style="margin-bottom:2rem">Bonjour,<br><em id="welcomeName">…</em></h1>
+
+  <div class="profile-grid">
+    <!-- SIDEBAR -->
+    <div class="profile-sidebar">
+      <div class="profile-avatar" id="profileAv">👤</div>
+      <div class="profile-name" id="profileName">Chargement…</div>
+      <div class="profile-email" id="profileEmail"></div>
+      <nav class="profile-nav" role="navigation">
+        <button class="profile-nav-item active" data-section="orders">📦 Mes commandes</button>
+        <button class="profile-nav-item" data-section="info">👤 Mes informations</button>
+        <button class="profile-nav-item" data-section="security">🔒 Sécurité</button>
+        <button class="profile-nav-item" data-section="preferences">⚙️ Préférences</button>
+        <div class="divider"></div>
+        <button class="profile-nav-item" id="logoutBtn" style="color:var(--danger)">🚪 Déconnexion</button>
+      </nav>
+    </div>
+
+    <!-- MAIN -->
+    <div class="profile-main">
+
+      <!-- ORDERS -->
+      <div class="profile-section active" id="section-orders">
+        <div class="section-title">Mes commandes</div>
+        <div id="ordersList"></div>
+      </div>
+
+      <!-- INFO -->
+      <div class="profile-section" id="section-info">
+        <div class="section-title">Mes informations</div>
+        <form id="infoForm" novalidate>
+          <input type="hidden" name="_csrf" id="infoCsrf">
+          <div class="form-group">
+            <label class="form-label" for="iName">Nom complet</label>
+            <input class="form-input" type="text" id="iName" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="iEmail">Email</label>
+            <input class="form-input" type="email" id="iEmail" autocomplete="email">
+            <div class="form-error" id="iEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="iPhone">Téléphone</label>
+            <input class="form-input" type="tel" id="iPhone" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="iAddress">Adresse</label>
+            <input class="form-input" type="text" id="iAddress" autocomplete="street-address">
+          </div>
+          <button class="btn btn-gold" type="submit">Enregistrer les modifications</button>
+        </form>
+      </div>
+
+      <!-- SECURITY -->
+      <div class="profile-section" id="section-security">
+        <div class="section-title">Sécurité</div>
+        <form id="pwForm" novalidate>
+          <input type="hidden" name="_csrf" id="secCsrf">
+          <div class="form-group">
+            <label class="form-label" for="pwOld">Mot de passe actuel</label>
+            <input class="form-input" type="password" id="pwOld" autocomplete="current-password" minlength="8">
+            <div class="form-error" id="pwOldErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pwNew">Nouveau mot de passe</label>
+            <input class="form-input" type="password" id="pwNew" autocomplete="new-password" minlength="8">
+            <div class="form-error" id="pwNewErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pwNew2">Confirmer le nouveau mot de passe</label>
+            <input class="form-input" type="password" id="pwNew2" autocomplete="new-password" minlength="8">
+            <div class="form-error" id="pwNew2Err"></div>
+          </div>
+          <button class="btn btn-gold" type="submit">Changer le mot de passe</button>
+        </form>
+
+        <div class="divider"></div>
+        <h4 style="font-family:var(--fd);font-size:1rem;color:var(--star);margin-bottom:1rem">Sessions actives</h4>
+        <div style="background:var(--ink);border-radius:var(--r);padding:1rem;font-size:.82rem;color:var(--moon)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>💻 Session actuelle <span style="font-size:.7rem;color:var(--mist)">(ce navigateur)</span></div>
+            <span class="tag-new">Active</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <h4 style="font-family:var(--fd);font-size:1rem;color:var(--danger);margin-bottom:1rem">Zone dangereuse</h4>
+        <button class="btn btn-danger" id="deleteAccountBtn">Supprimer mon compte</button>
+      </div>
+
+      <!-- PREFERENCES -->
+      <div class="profile-section" id="section-preferences">
+        <div class="section-title">Préférences</div>
+        <div class="form-group">
+          <label class="form-label">Notifications email</label>
+          <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:.3rem">
+            <label style="display:flex;align-items:center;gap:.7rem;font-size:.84rem;color:var(--moon);cursor:pointer">
+              <input type="checkbox" id="prefOrders" checked style="accent-color:var(--gold)"> Confirmations de commande
+            </label>
+            <label style="display:flex;align-items:center;gap:.7rem;font-size:.84rem;color:var(--moon);cursor:pointer">
+              <input type="checkbox" id="prefPromos" checked style="accent-color:var(--gold)"> Promotions et nouveautés
+            </label>
+            <label style="display:flex;align-items:center;gap:.7rem;font-size:.84rem;color:var(--moon);cursor:pointer">
+              <input type="checkbox" id="prefNewsletter" style="accent-color:var(--gold)"> Newsletter Lumès (conseils sommeil)
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prefLang">Langue</label>
+          <select class="form-input" id="prefLang" style="max-width:200px">
+            <option value="fr" selected>Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <button class="btn btn-gold" id="savePrefsBtn">Enregistrer les préférences</button>
+        <div class="divider"></div>
+        <div style="font-size:.78rem;color:var(--mist);line-height:1.8">
+          <strong style="color:var(--star)">Données personnelles (RGPD)</strong><br>
+          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.<br>
+          <a href="#" style="color:var(--gold)">Télécharger mes données</a> · <a href="#" style="color:var(--gold)">Politique de confidentialité</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../js/integrations.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/lumes.js"></script>
+<script>
+initPage();
+
+
+
+(function() {
+// Direct init
+document.getElementById('infoCsrf').value = Security.getCSRF();
+document.getElementById('secCsrf').value  = Security.getCSRF();
+
+const sess = Auth.getSession();
+  if (!sess) {
+    Toast.show('Veuillez vous connecter', 'error');
+    setTimeout(() => { goTo('../index.html'); }, 500);
+    return;
+  }
+
+  // Fill UI with user data
+  const user = Auth.getFullUser();
+  document.getElementById('welcomeName').textContent = sess.name.split(' ')[0];
+  document.getElementById('profileName').textContent = sess.name;
+  document.getElementById('profileEmail').textContent = sess.email;
+
+  // Info form prefill
+  document.getElementById('iName').value  = user?.name || '';
+  document.getElementById('iEmail').value = user?.email || '';
+  document.getElementById('iPhone').value = user?.phone || '';
+  document.getElementById('iAddress').value = user?.address || '';
+
+  // Render orders
+  renderOrders(user);
+
+  // Nav
+  document.querySelectorAll('.profile-nav-item[data-section]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.profile-nav-item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.profile-section').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('section-' + btn.dataset.section)?.classList.add('active');
+    });
+  });
+
+  // Logout
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+    Auth.logout();
+    Toast.show('Déconnecté avec succès', 'info');
+    setTimeout(() => goTo('../index.html'), 800);
+  });
+
+  // Info form save
+  document.getElementById('infoForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    clearFieldErrors();
+    const email = document.getElementById('iEmail').value.trim();
+    if (!Security.validEmail(email)) { showFieldError('iEmailErr', 'Email invalide'); return; }
+    Auth.updateUser({
+      name:    document.getElementById('iName').value.trim(),
+      email,
+      phone:   document.getElementById('iPhone').value.trim(),
+      address: document.getElementById('iAddress').value.trim(),
+    });
+    Toast.show('Informations mises à jour ✅', 'success');
+  });
+
+  // Password form
+  document.getElementById('pwForm')?.addEventListener('submit', async e => {
+    e.preventDefault();
+    clearFieldErrors();
+    const old   = document.getElementById('pwOld').value;
+    const n1    = document.getElementById('pwNew').value;
+    const n2    = document.getElementById('pwNew2').value;
+    if (!old) { showFieldError('pwOldErr', 'Requis'); return; }
+    if (n1.length < 8) { showFieldError('pwNewErr', 'Min. 8 caractères'); return; }
+    if (n1 !== n2) { showFieldError('pwNew2Err', 'Les mots de passe ne correspondent pas'); return; }
+
+    const res = await Auth.login(sess.email, old);
+    if (!res.ok) { showFieldError('pwOldErr', 'Mot de passe actuel incorrect'); return; }
+
+    const newHash = await Auth._hash(n1);
+    Auth.updateUser({ hash: newHash });
+    Toast.show('Mot de passe modifié ✅', 'success');
+    document.getElementById('pwForm').reset();
+  });
+
+  // Delete account
+  document.getElementById('deleteAccountBtn')?.addEventListener('click', () => {
+    if (!confirm('Supprimer définitivement votre compte ? Cette action est irréversible.')) return;
+    const users = Auth.getUsers().filter(u => u.id !== sess.userId);
+    Auth.saveUsers(users);
+    Auth.logout();
+    Toast.show('Compte supprimé', 'info');
+    setTimeout(() => goTo('../index.html'), 800);
+  });
+
+  // Preferences save
+  document.getElementById('savePrefsBtn')?.addEventListener('click', () => {
+    Auth.updateUser({
+      prefs: {
+        orders:      document.getElementById('prefOrders').checked,
+        promos:      document.getElementById('prefPromos').checked,
+        newsletter:  document.getElementById('prefNewsletter').checked,
+        lang:        document.getElementById('prefLang').value,
+      }
+    });
+    Toast.show('Préférences enregistrées ✅', 'success');
+  });
+  if (user?.prefs) {
+    if (user.prefs.newsletter !== undefined) document.getElementById('prefNewsletter').checked = user.prefs.newsletter;
+  }
+
+function renderOrders(user) {
+  const el = document.getElementById('ordersList');
+  const allOrders = [
+    ...(user?.orders || []),
+    ...JSON.parse(localStorage.getItem('_lumes_orders') || '[]')
+  ];
+
+  // Deduplicate
+  const seen = new Set();
+  const orders = allOrders.filter(o => { if (seen.has(o.id)) return false; seen.add(o.id); return true; });
+
+  if (orders.length === 0) {
+    el.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--mist)">
+      <div style="font-size:2rem;margin-bottom:.8rem">📦</div>
+      Aucune commande pour le moment.<br>
+      <a href="../index.html" class="btn btn-ghost" style="display:inline-block;margin-top:1rem">Découvrir la collection</a>
+    </div>`;
+    return;
+  }
+
+  const statusMap = {
+    pending:    { label:'En attente', cls:'status-pending' },
+    processing: { label:'En préparation', cls:'status-shipped' },
+    shipped:    { label:'Expédiée', cls:'status-shipped' },
+    delivered:  { label:'Livrée', cls:'status-delivered' },
+    cancelled:  { label:'Annulée', cls:'status-cancelled' },
+  };
+
+  el.innerHTML = orders.map(o => {
+    const s = statusMap[o.status] || { label: o.status, cls: 'status-pending' };
+    const date = o.date ? new Date(o.date).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' }) : '';
+    const itemsSummary = o.items?.map(i => Security.sanitize(i.name)).join(', ') || '';
+    return `<div class="order-card rv">
+      <div class="order-card-header">
+        <div>
+          <div class="order-id">${Security.sanitize(o.id)}</div>
+          <div class="order-date">${date}</div>
+        </div>
+        <span class="order-status ${s.cls}">${s.label}</span>
+      </div>
+      <div class="order-items">${itemsSummary}</div>
+      <div class="order-footer">
+        <span class="order-total">${o.payment?.total || '—'}</span>
+        <span style="font-size:.7rem;color:var(--mist)">${o.payment?.method?.toUpperCase() || ''}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+})();
+</script>
+</body>
+</html>
