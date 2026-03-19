@@ -1,4 +1,15 @@
 {
   "version": 2,
-  "builds": [{ "src": "**/*", "use": "@vercel/static" }]
+  "builds": [{ "src": "**/*", "use": "@vercel/static" }],
+  "routes": [
+    { "src": "/pages/collection", "dest": "/pages/collection.html" },
+    { "src": "/pages/product", "dest": "/pages/product.html" },
+    { "src": "/pages/checkout", "dest": "/pages/checkout.html" },
+    { "src": "/pages/profile", "dest": "/pages/profile.html" },
+    { "src": "/pages/contact", "dest": "/pages/contact.html" },
+    { "src": "/pages/legal", "dest": "/pages/legal.html" },
+    { "src": "/pages/cgv", "dest": "/pages/cgv.html" },
+    { "src": "/pages/privacy", "dest": "/pages/privacy.html" },
+    { "src": "/pages/cookies", "dest": "/pages/cookies.html" }
+  ]
 }
